@@ -76,7 +76,6 @@
     <Compile Include="Data\IDbProvider.cs" />
     <Compile Include="Data\IEntity.cs" />
     <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Engine.cs" />
     <Compile Include="FastReflection\ConstructorInvoker.cs" />
     <Compile Include="FastReflection\ConstructorInvokerCache.cs" />
     <Compile Include="FastReflection\ConstructorInvokerFactory.cs" />
@@ -120,11 +119,6 @@
     <Compile Include="Mvc\Result\JsonResult.cs" />
     <Compile Include="Mvc\Result\OperationResult.cs" />
     <Compile Include="Mvc\Result\ResponseMessage.cs" />
-    <Compile Include="Plugin\DefaultPluginLoader.cs" />
-    <Compile Include="Plugin\IPluginLoader.cs" />
-    <Compile Include="Plugin\NonePluginLoader.cs" />
-    <Compile Include="Plugin\PluginInfo.cs" />
-    <Compile Include="Plugin\PluginManager.cs" />
     <Compile Include="Principal\IPrincipal.cs" />
     <Compile Include="Principal\TokenHelper.cs" />
     <Compile Include="Principal\TokenInfo.cs" />
