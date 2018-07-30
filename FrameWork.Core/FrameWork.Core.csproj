@@ -71,7 +71,6 @@
     <Compile Include="Cache\MemcachedConfig.cs" />
     <Compile Include="Config\GlobalConfig.cs" />
     <Compile Include="Config\IConfig.cs" />
-    <Compile Include="Data\DbConfigInfo.cs" />
     <Compile Include="Data\IDbFactory.cs" />
     <Compile Include="Data\IDbProvider.cs" />
     <Compile Include="Data\IEntity.cs" />

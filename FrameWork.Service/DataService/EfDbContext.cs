@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -8,43 +7,13 @@ namespace FrameWork.DataService
 {
     public class EfDbContext : DbContext
     {
-        private readonly DbConnection connection;
-
         /// <summary>
         /// 是否开启事务
         /// </summary>
         internal bool HaveTransaction { get; set; }
 
-        /// <summary>
-        /// 参数前缀
-        /// </summary>
-        internal string ParaPrefix { get; set; }
-
-        /// <summary>
-        /// 命名前缀
-        /// </summary>
-        internal string NamePrefix { get; set; }
-
-        /// <summary>
-        /// 命名后缀
-        /// </summary>
-        internal string NameSuffix { get; set; }
-
-        /// <summary>
-        /// 数据库对象工厂
-        /// </summary>
-        internal DbProviderFactory Factory { get; private set; }
-
         public EfDbContext(string connectString) : base(connectString)
         {
-        }
-
-        public EfDbContext(DbConnection connection, DbProviderFactory factory)
-            : base(connection, true)
-        {
-            this.connection = connection;
-            this.Factory = factory;
-
             this.Configuration.AutoDetectChangesEnabled = false;
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
@@ -55,9 +24,9 @@ namespace FrameWork.DataService
         /// </summary>
         internal void CloseConnection()
         {
-            if (!this.HaveTransaction && this.connection.State != System.Data.ConnectionState.Closed)
+            if (!this.HaveTransaction && this.Database.Connection.State != System.Data.ConnectionState.Closed)
             {
-                this.connection.Close();
+                this.Database.Connection.Close();
             }
         }
 

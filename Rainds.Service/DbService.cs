@@ -13,7 +13,7 @@ namespace Rainds.Service
             get
             {
                 return Locator.Get<IDbFactory>()
-                    .GetDbProvider("name=DefaultConnection");
+                    .GetDbProvider("DefaultConnection");
             }
         }
     }
