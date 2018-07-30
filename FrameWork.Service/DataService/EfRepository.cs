@@ -14,7 +14,7 @@ namespace FrameWork.DataService
     public class EfRepository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class, IEntity, new()
     {
         private DbSet<TEntity> dbset;
-        private EfDbContext context;
+        private BaseDbContext context;
         private ObjectSet<TEntity> objectSet;
         private Type entityType;
 
@@ -30,7 +30,7 @@ namespace FrameWork.DataService
             }
         }
 
-        public EfRepository(EfDbContext context)
+        public EfRepository(BaseDbContext context)
         {
             this.context = context;
             this.dbset = this.context.Set<TEntity>();

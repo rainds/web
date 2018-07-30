@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -71,10 +77,15 @@
     <Compile Include="Cache\MemcachedConfig.cs" />
     <Compile Include="Config\GlobalConfig.cs" />
     <Compile Include="Config\IConfig.cs" />
+    <Compile Include="Data\DataCommon.cs" />
+    <Compile Include="Data\BaseDbContext.cs" />
     <Compile Include="Data\IDbFactory.cs" />
     <Compile Include="Data\IDbProvider.cs" />
     <Compile Include="Data\IEntity.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\Migrations\DatabaseMigrator.cs" />
+    <Compile Include="Data\Migrations\GenericConfiguration.cs" />
+    <Compile Include="Data\EfDbContext.cs" />
     <Compile Include="FastReflection\ConstructorInvoker.cs" />
     <Compile Include="FastReflection\ConstructorInvokerCache.cs" />
     <Compile Include="FastReflection\ConstructorInvokerFactory.cs" />
@@ -130,6 +141,7 @@
     <Compile Include="Utility\SecurityHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

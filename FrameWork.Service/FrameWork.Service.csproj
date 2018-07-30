@@ -65,15 +65,11 @@
     <Compile Include="CacheService\RemoteCache.cs" />
     <Compile Include="ConfigService\Config.cs" />
     <Compile Include="ConfigService\ConfigInitializer.cs" />
-    <Compile Include="DataService\DataCommon.cs" />
-    <Compile Include="DataService\EfDbContext.cs" />
     <Compile Include="DataService\EfDbFactory.cs" />
     <Compile Include="DataService\EfDbProvider.cs" />
     <Compile Include="DataService\EfInitializer.cs" />
     <Compile Include="DataService\EfIntercepterLogging.cs" />
     <Compile Include="DataService\EfRepository.cs" />
-    <Compile Include="DataService\Migrations\DatabaseMigrator.cs" />
-    <Compile Include="DataService\Migrations\GenericConfiguration.cs" />
     <Compile Include="DataService\OperationsVisitor.cs" />
     <Compile Include="IocService\AutofacContainer.cs" />
     <Compile Include="IocService\AutofacInitializer.cs" />

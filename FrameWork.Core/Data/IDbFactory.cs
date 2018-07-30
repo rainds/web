@@ -12,7 +12,7 @@ namespace FrameWork.Core.Data
         /// </summary>
         /// <param name="dbkey"></param>
         /// <returns></returns>
-        IDbProvider GetDbProvider(string dbkey);
+        IDbProvider GetDbProvider<TContext>() where TContext : BaseDbContext, new();
 
         /// <summary>
         /// 注册程序集中所有实体

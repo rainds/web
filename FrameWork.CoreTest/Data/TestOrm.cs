@@ -39,7 +39,7 @@ namespace FrameWork.CoreTest.Data
             get
             {
                 return Locator.Get<Core.Data.IDbFactory>()
-                    .GetDbProvider("Supplier.Site");
+                    .GetDbProvider<EfDbContext>();
             }
         }
 
@@ -48,7 +48,7 @@ namespace FrameWork.CoreTest.Data
             get
             {
                 return Locator.Get<Core.Data.IDbFactory>()
-                    .GetDbProvider("Supplier.Site1");
+                   .GetDbProvider<EfDbContext>();
             }
         }
 

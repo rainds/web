@@ -14,7 +14,6 @@ namespace FrameWork.DataService
             Locator.Container.Update(register);
 
             // Database.SetInitializer<EfDbContext>(null);
-            DatabaseMigrator.MigrateDatabase("name=DefaultConnection");
 
 #if DEBUG
             DbInterception.Add(new EfIntercepterLogging());

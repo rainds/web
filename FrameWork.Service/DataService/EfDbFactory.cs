@@ -8,25 +8,14 @@ namespace FrameWork.DataService
 {
     public class EfDbFactory : IDbFactory, IDisposable
     {
-        private IDictionary<string, EfDbContext> contexts = new Dictionary<string, EfDbContext>();
-
-        public IDbProvider GetDbProvider(string dbkey)
-        {
-            EfDbContext context;
-            if (this.contexts.TryGetValue(dbkey, out context)) return new EfDbProvider(context);
-
-            context = new EfDbContext(dbkey);
-
-            this.contexts.Add(dbkey, context);
-            return new EfDbProvider(context);
-        }
+        private IDictionary<string, BaseDbContext> contexts = new Dictionary<string, BaseDbContext>();
 
         public void RegisterEntities(Assembly assembly)
         {
             var baseType = typeof(IEntity);
             foreach (var entityType in assembly.GetTypes().Where(m => baseType.IsAssignableFrom(m) && !m.IsAbstract))
             {
-                EfDbContext.RegisterEntity(entityType);
+                BaseDbContext.RegisterEntity(entityType);
             }
         }
 
@@ -34,6 +23,18 @@ namespace FrameWork.DataService
         {
             this.contexts.Clear();
             this.contexts = null;
+        }
+
+        public IDbProvider GetDbProvider<TContext>() where TContext : BaseDbContext, new()
+        {
+            BaseDbContext context;
+            var dbkey = typeof(TContext).FullName;
+            if (this.contexts.TryGetValue(dbkey, out context)) return new EfDbProvider(context);
+
+            context = new TContext();
+
+            this.contexts.Add(dbkey, context);
+            return new EfDbProvider(context);
         }
     }
 }

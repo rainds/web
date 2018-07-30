@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace FrameWork.DataService
+namespace FrameWork.Core.Data
 {
-    public class EfDbContext : DbContext
+    public class BaseDbContext : DbContext
     {
         /// <summary>
         /// 是否开启事务
         /// </summary>
-        internal bool HaveTransaction { get; set; }
+        public bool HaveTransaction { get; set; }
 
-        public EfDbContext(string connectString) : base(connectString)
+        public BaseDbContext(string connectString) : base(connectString)
         {
             this.Configuration.AutoDetectChangesEnabled = false;
             this.Configuration.LazyLoadingEnabled = false;
@@ -22,7 +22,7 @@ namespace FrameWork.DataService
         /// <summary>
         /// 关闭数据库连接
         /// </summary>
-        internal void CloseConnection()
+        public void CloseConnection()
         {
             if (!this.HaveTransaction && this.Database.Connection.State != System.Data.ConnectionState.Closed)
             {
@@ -38,7 +38,7 @@ namespace FrameWork.DataService
         /// <summary>
         /// 注册实体类型
         /// </summary>
-        internal static void RegisterEntity(Type entityType)
+        public static void RegisterEntity(Type entityType)
         {
             if (!LazyEntityTypes.ContainsKey(entityType.FullName))
             {

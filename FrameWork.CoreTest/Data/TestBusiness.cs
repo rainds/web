@@ -31,7 +31,7 @@ namespace FrameWork.CoreTest.Data
             get
             {
                 return Locator.Get<IDbFactory>()
-                    .GetDbProvider("Supplier.Site");
+                    .GetDbProvider<EfDbContext>();
             }
         }
 

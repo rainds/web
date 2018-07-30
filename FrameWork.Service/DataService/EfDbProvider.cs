@@ -10,11 +10,11 @@ namespace FrameWork.DataService
 {
     public class EfDbProvider : IDbProvider
     {
-        private EfDbContext context;
+        private BaseDbContext context;
         private DbContextTransaction transaction;
         private IDictionary<string, object> repositories;
 
-        public EfDbProvider(EfDbContext context)
+        public EfDbProvider(BaseDbContext context)
         {
             this.context = context;
             this.repositories = new Dictionary<string, object>();
