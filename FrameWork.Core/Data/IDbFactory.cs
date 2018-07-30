@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace FrameWork.Core.Data
+﻿namespace FrameWork.Core.Data
 {
     /// <summary>
     /// 数据提供者工厂
@@ -13,10 +11,5 @@ namespace FrameWork.Core.Data
         /// <param name="dbkey"></param>
         /// <returns></returns>
         IDbProvider GetDbProvider<TContext>() where TContext : BaseDbContext, new();
-
-        /// <summary>
-        /// 注册程序集中所有实体
-        /// </summary>
-        void RegisterEntities(Assembly assembly);
     }
 }

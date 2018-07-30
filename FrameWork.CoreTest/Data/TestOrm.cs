@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using FrameWork.Core;
 using FrameWork.Core.Data;
@@ -31,7 +30,6 @@ namespace FrameWork.CoreTest.Data
         public void InitOrm()
         {
             new AutofacInitializer().Init();
-            Locator.Get<IDbFactory>().RegisterEntities(Assembly.GetExecutingAssembly());
         }
 
         private static Core.Data.IDbProvider DbProvider

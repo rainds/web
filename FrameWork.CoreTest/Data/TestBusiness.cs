@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Reflection;
 using FrameWork.Core;
 using FrameWork.Core.Data;
 using FrameWork.DataService;
@@ -20,7 +19,6 @@ namespace FrameWork.CoreTest.Data
         {
             new AutofacInitializer().Init();
             new EfInitializer().Init();
-            Locator.Get<IDbFactory>().RegisterEntities(Assembly.GetExecutingAssembly());
         }
 
         /// <summary>

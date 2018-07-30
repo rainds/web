@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using FrameWork.Core.Data;
 
 namespace FrameWork.DataService
@@ -9,15 +7,6 @@ namespace FrameWork.DataService
     public class EfDbFactory : IDbFactory, IDisposable
     {
         private IDictionary<string, BaseDbContext> contexts = new Dictionary<string, BaseDbContext>();
-
-        public void RegisterEntities(Assembly assembly)
-        {
-            var baseType = typeof(IEntity);
-            foreach (var entityType in assembly.GetTypes().Where(m => baseType.IsAssignableFrom(m) && !m.IsAbstract))
-            {
-                BaseDbContext.RegisterEntity(entityType);
-            }
-        }
 
         public void Dispose()
         {

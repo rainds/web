@@ -38,6 +38,7 @@ namespace Rainds.Service.User
         /// <summary>
         /// 用户名称
         /// </summary>
+        [Required]
         public string UserName
         {
             get;
@@ -47,6 +48,7 @@ namespace Rainds.Service.User
         /// <summary>
         /// 用户手机
         /// </summary>
+        [Required]
         public string Mobile
         {
             get;
@@ -56,6 +58,8 @@ namespace Rainds.Service.User
         /// <summary>
         /// 用户邮箱
         /// </summary>
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email
         {
             get;
@@ -65,6 +69,7 @@ namespace Rainds.Service.User
         /// <summary>
         /// 用户登录密码
         /// </summary>
+        [DataType(DataType.Password)]
         public string Password
         {
             get;
@@ -74,6 +79,7 @@ namespace Rainds.Service.User
         /// <summary>
         /// 验证类型
         /// </summary>
+        [EnumDataType(typeof(ValidationType))]
         public ValidationType ValidationType
         {
             get;
@@ -83,6 +89,7 @@ namespace Rainds.Service.User
         /// <summary>
         /// 注册时间
         /// </summary>
+        [DataType(DataType.DateTime)]
         public DateTime RegisterTime
         {
             get;
@@ -92,6 +99,7 @@ namespace Rainds.Service.User
         /// <summary>
         /// 最后登录时间
         /// </summary>
+        [DataType(DataType.DateTime)]
         public DateTime LastLoginTime
         {
             get;

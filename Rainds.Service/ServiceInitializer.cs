@@ -16,8 +16,7 @@ namespace Rainds.Service
     {
         protected override void OnInit()
         {
-            //初始化实体
-            Locator.Get<IDbFactory>().RegisterEntities(Assembly.GetExecutingAssembly());
+            //RegisterEntities();
 
             //初始化服务
             var register = Locator.Get<IRegister>();
@@ -31,6 +30,15 @@ namespace Rainds.Service
             register.Set<UserService, IPrincipal>(LifeTime.LifetimeScope);
 
             Locator.Container.Update(register);
+        }
+
+        public static void RegisterEntities()
+        {
+            var baseType = typeof(IEntity);
+            foreach (var entityType in Assembly.GetExecutingAssembly().GetTypes().Where(m => baseType.IsAssignableFrom(m) && !m.IsAbstract))
+            {
+                BaseDbContext.RegisterEntity(entityType);
+            }
         }
     }
 }

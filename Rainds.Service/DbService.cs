@@ -8,7 +8,7 @@ namespace Rainds.Service
         /// <summary>
         /// MySql数据库
         /// </summary>
-        public static IDbProvider MySqlProvider
+        internal static IDbProvider MySqlProvider
         {
             get
             {
