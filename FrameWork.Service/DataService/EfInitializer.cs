@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Interception;
+﻿using System.Data.Entity.Infrastructure.Interception;
 using FrameWork.Core;
 using FrameWork.Core.Data;
 using FrameWork.Core.Ioc;
@@ -14,7 +13,8 @@ namespace FrameWork.DataService
             register.Set<EfDbFactory, IDbFactory>(LifeTime.LifetimeScope);
             Locator.Container.Update(register);
 
-            Database.SetInitializer<EfDbContext>(null);
+            // Database.SetInitializer<EfDbContext>(null);
+            DatabaseMigrator.MigrateDatabase("name=DefaultConnection");
 
 #if DEBUG
             DbInterception.Add(new EfIntercepterLogging());

@@ -8,7 +8,7 @@ namespace FrameWork.Core.Data
     /// <summary>
     /// 实体操作者
     /// </summary>
-    public interface IRepository<TEntity> where TEntity : class, new()
+    public interface IRepository<TEntity> where TEntity : IEntity, new()
     {
         /// <summary>
         /// 插入实体

@@ -37,7 +37,7 @@ namespace Rainds.Service.User
                     return OperationResult<int>.Failure("密码不正确");
                 }
 
-                repository.Update(w => w.UserId == entity.UserId, () => new UserEntity { LastLoginTime = DateTime.Now });
+                repository.Update(w => w.UserId == entity.UserId, m => new UserEntity { LastLoginTime = DateTime.Now });
                 LoginHelper.RemoveTimes(model.Name);
                 return new OperationResult<int>(entity.UserId);
             }

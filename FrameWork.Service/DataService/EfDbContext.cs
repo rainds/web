@@ -35,6 +35,10 @@ namespace FrameWork.DataService
         /// </summary>
         internal DbProviderFactory Factory { get; private set; }
 
+        public EfDbContext(string connectString) : base(connectString)
+        {
+        }
+
         public EfDbContext(DbConnection connection, DbProviderFactory factory)
             : base(connection, true)
         {

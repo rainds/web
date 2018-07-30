@@ -10,14 +10,14 @@ namespace FrameWork.DataService
         /// <summary>
         /// 迁移数据库。
         /// </summary>
-        public static void MigrateDatabase()
+        public static void MigrateDatabase(string connectString)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfDbContext, GenericConfiguration>());
 
-            //using (var dbContext = new EfDbContext())
-            //{
-            //    dbContext.Database.Initialize(true);
-            //}
+            using (var dbContext = new EfDbContext(connectString))
+            {
+                dbContext.Database.Initialize(true);
+            }
         }
     }
 }

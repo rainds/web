@@ -20,7 +20,7 @@ namespace FrameWork.DataService
             this.repositories = new Dictionary<string, object>();
         }
 
-        public IRepository<TEntity> Repository<TEntity>() where TEntity : class,new()
+        public IRepository<TEntity> Repository<TEntity>() where TEntity : class, IEntity, new()
         {
             object obj;
             var typename = typeof(TEntity).FullName;

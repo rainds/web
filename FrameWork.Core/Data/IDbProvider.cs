@@ -10,7 +10,7 @@ namespace FrameWork.Core.Data
         /// <summary>
         /// 获得实体操作者
         /// </summary>
-        IRepository<TEntity> Repository<TEntity>() where TEntity : class, new();
+        IRepository<TEntity> Repository<TEntity>() where TEntity : class, IEntity, new();
 
         /// <summary>
         /// 事务开启(同一个数据提供者共用一个事务)

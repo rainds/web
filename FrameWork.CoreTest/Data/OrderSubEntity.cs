@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using FrameWork.Core.Data;
 
 namespace FrameWork.CoreTest.Data
 {
-    public class OrderSubEntity 
+    public class OrderSubEntity : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

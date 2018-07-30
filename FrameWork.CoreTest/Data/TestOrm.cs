@@ -4,10 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FrameWork.Core;
 using FrameWork.Core.Data;
 using FrameWork.IocService;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FrameWork.CoreTest.Data
 {
@@ -89,7 +89,7 @@ namespace FrameWork.CoreTest.Data
                 var repository = provider.Repository<ProductEntity>();
                 repository.Insert(new ProductEntity { ProductCode = "001", ProductName = "TestName" });
                 repository.Update(e => e.ProductCode == "001",
-                    () => new ProductEntity { ProductName = "TestBatchName" });
+                    m => new ProductEntity { ProductName = "TestBatchName" });
                 repository.Delete(e => e.ProductCode == "001");
             }
         }
@@ -104,7 +104,7 @@ namespace FrameWork.CoreTest.Data
                     //使用计算公式批量更新所有符合特定条件的实体
                     var subRepository = provider.Repository<OrderSubEntity>();
                     subRepository.Insert(new OrderSubEntity { ProductCode = "001", Price = 100, Qty = 3 });
-                    subRepository.Update(e => e.ProductCode == "001", u => u.Qty == u.Qty + 1);
+                    subRepository.Update(e => e.ProductCode == "001", u => new OrderSubEntity { Qty = u.Qty + 1 });
                 }
             }
         }
@@ -131,7 +131,6 @@ namespace FrameWork.CoreTest.Data
             }
         }
 
-
         [TestMethod]
         public void TestLeftJoin()
         {
@@ -152,34 +151,34 @@ namespace FrameWork.CoreTest.Data
             };
 
             var innerResult = from a in A
-                             join b in B
-                             on a.AID equals b.AID
-                             select new
-                             {
-                                 CLASS = a.Class,
-                                 Name = b.BName,
-                             };
-
-            var leftResult = from a in A
                               join b in B
-                              on a.AID equals b.AID into ab
-
+                              on a.AID equals b.AID
                               select new
                               {
                                   CLASS = a.Class,
-                                  Name = ab,
+                                  Name = b.BName,
                               };
 
-            var leftResult1 = from a in A
+            var leftResult = from a in A
                              join b in B
                              on a.AID equals b.AID into ab
-                             from v in ab.DefaultIfEmpty()
+
                              select new
                              {
                                  CLASS = a.Class,
                                  Name = ab,
-                                 t = v
                              };
+
+            var leftResult1 = from a in A
+                              join b in B
+                              on a.AID equals b.AID into ab
+                              from v in ab.DefaultIfEmpty()
+                              select new
+                              {
+                                  CLASS = a.Class,
+                                  Name = ab,
+                                  t = v
+                              };
 
             var leftResult3 = from b in B
                               join a in A
@@ -194,16 +193,17 @@ namespace FrameWork.CoreTest.Data
 
             var leftResult4 = from b in B
                               join a in A
-                              on b.AID equals a.AID 
+                              on b.AID equals a.AID
                               select new
                               {
-                                 b,a
+                                  b,
+                                  a
                               };
 
             var leftResult2 = from a in A
                               join b in B
                               on a.AID equals b.AID into ab
-                              from v in ab.DefaultIfEmpty(new B { AID=0,BID=0,BName=""})
+                              from v in ab.DefaultIfEmpty(new B { AID = 0, BID = 0, BName = "" })
                               select new
                               {
                                   CLASS = a.Class,

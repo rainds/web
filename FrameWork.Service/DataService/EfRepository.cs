@@ -11,7 +11,7 @@ using Z.EntityFramework.Plus;
 
 namespace FrameWork.DataService
 {
-    public class EfRepository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class, new()
+    public class EfRepository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class, IEntity, new()
     {
         private DbSet<TEntity> dbset;
         private EfDbContext context;

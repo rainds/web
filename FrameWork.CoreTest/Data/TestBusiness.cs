@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FrameWork.Core;
 using FrameWork.Core.Data;
-using FrameWork.IocService;
 using FrameWork.DataService;
-using System.ComponentModel.DataAnnotations;
+using FrameWork.IocService;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FrameWork.CoreTest.Data
 {
@@ -96,7 +96,7 @@ namespace FrameWork.CoreTest.Data
     /// <summary>
     /// 小分类
     /// </summary>
-    public class ProductCategoriesEntity
+    public class ProductCategoriesEntity : IEntity
     {
         /// <summary>
         /// 小类Id
