@@ -70,7 +70,6 @@
     <Compile Include="DataService\EfInitializer.cs" />
     <Compile Include="DataService\EfIntercepterLogging.cs" />
     <Compile Include="DataService\EfRepository.cs" />
-    <Compile Include="DataService\OperationsVisitor.cs" />
     <Compile Include="IocService\AutofacContainer.cs" />
     <Compile Include="IocService\AutofacInitializer.cs" />
     <Compile Include="IocService\AutofacRegister.cs" />
